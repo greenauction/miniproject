@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">greenauction</string>
+    <string name="textview">TextView</string>
+</resources>
