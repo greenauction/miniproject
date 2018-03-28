@@ -1,0 +1,29 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.shravanram.greenauction.FarmerSide.MenuActivity">
+    <item
+        android:id="@+id/action_home"
+        android:orderInCategory="100"
+        android:title="@string/action_home" />
+    <item
+        android:id="@+id/action_myauctions"
+        android:orderInCategory="101"
+        android:title="@string/action_myauctions" />
+    <item
+        android:id="@+id/action_ongoing"
+        android:orderInCategory="102"
+        android:title="@string/action_ongoing" />
+    <item
+        android:id="@+id/action_logout"
+        android:orderInCategory="103"
+        android:title="@string/action_logout" />
+    <menu android:orderInCategory="104" />
+</menu>
+
+
+

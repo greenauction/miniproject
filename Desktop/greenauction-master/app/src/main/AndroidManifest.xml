@@ -11,22 +11,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">  <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".ProfileActivity">
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".PortalCreation" />
+        <activity android:name=".portalView" />
+        <activity android:name=".Ongoing" />
+        <activity android:name=".Completed" />
+        <activity android:name=".FarmerBid" />
+        <activity android:name=".FarmerSide.FarmerOngoing">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".PortalCreation">
-
-
-        </activity>
-        <activity android:name=".portalView">
-
-        </activity>
+        <activity android:name=".FarmerSide.MenuActivity"></activity>
     </application>
 
 </manifest>

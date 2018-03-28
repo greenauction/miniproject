@@ -1,5 +1,6 @@
 package com.example.shravanram.greenauction;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -100,7 +101,7 @@ public class PortalCreation extends AppCompatActivity {
                 mDatabase.child("auction").child(c).setValue(info);
                mDatabase.child("Customer").child(e2).child("AuctionID").push().setValue(c);
 
-
+                startActivity(new Intent(getApplicationContext(),FarmerBid.class));
             }
         });
         mDatabase.addValueEventListener(new ValueEventListener() {
