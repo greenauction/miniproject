@@ -28,18 +28,18 @@ public class portalView extends AppCompatActivity implements View.OnClickListene
         if(view==ongoing)
         {
           //  finish();
-            startActivity(new Intent(this,Ongoing.class));
+            startActivity(new Intent(this,OngoingConsumerSide.class));
 
         }
         if(view==completed)
         {
           //  finish();
-            startActivity(new Intent(this,Completed.class));
+            startActivity(new Intent(this,CompletedConsumerSide.class));
         }
         if(view==buttonLogout) {
           //  finish();
             firebaseAuth.signOut();
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, LoginActivity.class));
         }
     }
     }

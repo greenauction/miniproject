@@ -21,6 +21,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import static java.lang.Integer.parseInt;
 
@@ -34,7 +36,7 @@ public class PortalCreation extends AppCompatActivity {
     private EditText time;
     private EditText iniprice;
     private Button createbut;
-    private DatabaseReference mRef;
+    //private DatabaseReference mImg;
     FirebaseUser current;
     String e1[];
 
@@ -42,6 +44,18 @@ public class PortalCreation extends AppCompatActivity {
     String c="";
     int count;
 
+
+
+    Map<String, String> imgmap = new HashMap<String, String>();
+    public  PortalCreation() {
+
+        imgmap.put("potato","https://tse1.mm.bing.net/th?id=OIP.oDSW7MrHpJpKcgIt4W3N4QHaE8&pid=15.1&P=0&w=261&h=175");
+        imgmap.put("tomato","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmXQk9i0iTphknHQySqdvcXmxOz5K1kFn2fGVeRNX_gJItQ7lY");
+
+        imgmap.put("orange","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkid2LgT8k6OKuTPz4kQwX2Dnp3YK3Pq0mayTCFLfZbTmFZhgX-A");
+        imgmap.put("coriander","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBeF892J11FhWAJw-E4secl1vlyNTM1KSMZtVQiiJtGS04T7dn");
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,8 +81,6 @@ public class PortalCreation extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
 
-//        mRef = FirebaseDatabase.getInstance().getReference().child("count");
-
         final ArrayList<PersonInfo> person=new ArrayList<>();
         createbut = (Button) findViewById(R.id.create);
         createbut.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +96,7 @@ public class PortalCreation extends AppCompatActivity {
 
 
                 c = "" + count;
-
+                //setting count of auctions
                mDatabase.child("count").setValue(c);
                Log.d("count",c);
                 PersonInfo info=new PersonInfo();
@@ -96,10 +108,16 @@ public class PortalCreation extends AppCompatActivity {
                 info.weight=units;
                 info.email=fire.getCurrentUser().getEmail().toString();
                 info.category=dropDownCategory.getSelectedItem().toString();
+                //get the produce name's value which is the image's address.
+                /*when we write "imgaddr" it gets stored as "\"imgaddr\"" in firebase
+                hence we replace " in link with blank space because firebase puts the link automatically
+                in quotes.*/
+                info.image=imgmap.get(prod.toLowerCase().replace("\"",""));
                 e1=fire.getCurrentUser().getEmail().toString().split("\\.");
                 String e2=e1[0];
                 mDatabase.child("auction").child(c).setValue(info);
-               mDatabase.child("Customer").child(e2).child("AuctionID").push().setValue(c);
+
+               mDatabase.child("Consumer").child(e2).child("AuctionID").push().setValue(c);
 
                 startActivity(new Intent(getApplicationContext(),FarmerBid.class));
             }
@@ -107,10 +125,10 @@ public class PortalCreation extends AppCompatActivity {
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                //this is to give auction id
                     c= dataSnapshot.child("count").getValue().toString();
                     count=Integer.parseInt(c);
                     count++;
-
 
             }
 
