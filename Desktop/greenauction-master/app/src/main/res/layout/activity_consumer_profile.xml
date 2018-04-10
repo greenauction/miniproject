@@ -40,6 +40,6 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="11dp"
         android:layout_toEndOf="@+id/createPortal"
-        android:text="TextView" />
+        android:text="Consumer Side" />
 
 </RelativeLayout>

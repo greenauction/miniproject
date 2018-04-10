@@ -4,17 +4,13 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
 
-public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
+public class ConsumerProfileActivity extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth firebaseAuth;
     private TextView textViewUserEmail;
     private ImageButton createPortal;
@@ -27,12 +23,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_p);
+        setContentView(R.layout.activity_consumer_profile);
 
         buttonLogout = (Button) findViewById(R.id.ButtonLogout);
         textViewUserEmail=(TextView) findViewById(R.id.userText);
         buttonLogout.setOnClickListener(this);
-      //  firebaseAuth=FirebaseAuth.getInstance();
+       firebaseAuth=FirebaseAuth.getInstance();
         createPortal=(ImageButton) findViewById(R.id.createPortal);
         viewPortal=(ImageButton) findViewById(R.id.viewPortal);
         createPortal.setOnClickListener(this);
@@ -52,19 +48,19 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
         if(view==createPortal)
         {
-            finish();
+           // finish();
             startActivity(new Intent(this,PortalCreation.class));
 
         }
         if(view==viewPortal)
         {
-            finish();
+           // finish();
            startActivity(new Intent(this,portalView.class));
         }
         if(view==buttonLogout) {
-            finish();
+           // finish();
             firebaseAuth.signOut();
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, LoginActivity.class));
         }
     }
 }
